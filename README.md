@@ -9,9 +9,9 @@ CBTIS No. 200 · Programación · 3AM PGR · Docente: Mtro. Omar Torres Sánchez
 
 | Rol | Integrante |
 |-----|------------|
-| Product Owner | (nombre) |
-| Scrum Master | (nombre) |
-| Equipo de desarrollo | (nombre) |
+| Product Owner | (Jose Mendes) |
+| Scrum Master | (Cristian Valencia) |
+| Equipo de desarrollo | (Inez de la Cruz) |
 
 Tablero del proyecto: (pega aquí la liga de tu tablero de GitHub Projects)
 
