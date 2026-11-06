@@ -1,6 +1,6 @@
 # test_calificaciones.py - Cada criterio de aceptación es una prueba
 # Se ejecutan desde la carpeta califiapp con:
-#     python -m unittest discover -s tests -v
+#python -m unittest discover -s tests -v
 import os
 import sys
 import unittest
@@ -27,6 +27,12 @@ class HU01RegistrarAlumnos(unittest.TestCase):
         alumnos = ["Alumno"] * 30
         self.assertFalse(registrar_alumno(alumnos, "Luis"))
         self.assertEqual(len(alumnos), 30)
+
+    def test_no_registrar_nombre_repetido(self):
+        alumnos = ["Ana Lopez"]
+        self.assertFalse(registrar_alumno(alumnos, "Ana López"))
+        self.assertFalse(registrar_alumno(alumnos, "ana lópez"))
+        self.assertEqual(len(alumnos), 1)
 
 
 class HU02CapturarCalificaciones(unittest.TestCase):
