@@ -59,7 +59,16 @@ def opcion_capturar():
             else:
                 parciales.append(calificacion)
         calificaciones[nombre] = parciales
-
+# Refactorización (PG7): un solo lugar calcula los promedios del grupo.
+# Regresa una lista de parejas (nombre, promedio) de los alumnos
+# que ya tienen calificaciones. La usan HU-03 y HU-04.
+def promedios_del_grupo():
+    resultado = []
+    for nombre in alumnos:
+        if nombre in calificaciones:
+            promedio = calcular_promedio(calificaciones[nombre])
+            resultado.append((nombre, promedio))
+            return resultado
 
 # HU-03 Calcular promedio y estatus
 def opcion_promedios():
@@ -67,10 +76,12 @@ def opcion_promedios():
         print("\nPrimero captura calificaciones (opción 2).")
         return
     print("\nPROMEDIO Y ESTATUS")
-    for nombre in alumnos:
-        if nombre in calificaciones:
-            promedio = calcular_promedio(calificaciones[nombre])
-            print(" ", nombre, "->", promedio, obtener_estatus(promedio))
+    for nombre, promedio in promedios_del_grupo():
+        print("", nombre,"->", promedio, obtener_estatus(promedio))
+    #for nombre in alumnos:
+        #if nombre in calificaciones:
+            #promedio = calcular_promedio(calificaciones[nombre])
+            #print(" ", nombre, "->", promedio, obtener_estatus(promedio))
 
 
 # HU-04 Mostrar reporte del grupo
@@ -83,14 +94,17 @@ def opcion_reporte():
     print("Alumno | Promedio | Estatus")
     print("-" * 50)
     promedios = []
-    for nombre in alumnos:
-        if nombre in calificaciones:
-            promedio = calcular_promedio(calificaciones[nombre])
-            promedios.append(promedio)
-            print(fila_reporte(nombre, promedio))
-    print("-" * 50)
-    print("Promedio grupal:", promedio_grupal(promedios))
-    print("TOTAL de alumnos en el reporte: ",len(promedios))
+    #for nombre in alumnos:
+        #if nombre in calificaciones:
+            #promedio = calcular_promedio(calificaciones[nombre])
+            #promedios.append(promedio)
+            #print(fila_reporte(nombre, promedio))
+    for nombre, promedio in promedios_del_grupo():
+        promedios.append(promedio)
+        print(fila_reporte(nombre, promedio))
+        print("-" * 50)
+        print("Promedio grupal:", promedio_grupal(promedios))
+        print("TOTAL de alumnos en el reporte: ",len(promedios))
 
 
 # ==============================================================
