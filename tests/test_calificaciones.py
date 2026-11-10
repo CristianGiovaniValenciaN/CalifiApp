@@ -29,7 +29,7 @@ class HU01RegistrarAlumnos(unittest.TestCase):
         self.assertEqual(len(alumnos), 30)
 
     def test_no_registrar_nombre_repetido(self):
-        alumnos = ["Ana Lopez"]
+        alumnos = ["Ana López"]
         self.assertFalse(registrar_alumno(alumnos, "Ana López"))
         self.assertFalse(registrar_alumno(alumnos, "ana lópez"))
         self.assertEqual(len(alumnos), 1)
@@ -72,6 +72,22 @@ class HU04ReporteDelGrupo(unittest.TestCase):
 
     def test_promedio_grupal_sin_alumnos(self):
         self.assertEqual(promedio_grupal([]), 0.0)
+
+    class HU05ListaDelGrupo(unittest.TestCase):
+
+        def test_lista_en_orden_alfabetico(self):
+            alumnos = ["Luis Pérez", "ana López", "Carla Ruiz"]
+            self.assertEqual(lista_ordenada(alumnos), ["ana López", "Carla Ruiz", "Luis Pérez"])
+
+        def test_lista_original_no_cambia(self):
+
+            alumnos = ["Luis Pérez", "Ana López"]
+            lista_ordenada(alumnos)
+            self.assertEqual(alumnos, ["Luis Pérez", "Ana López"])
+
+        def test_linea_de_la_lista(self):
+            
+            self.assertEqual(linea_lista(1, "Ana López"), "1. Ana López")
 
 
 if __name__ == "__main__":
