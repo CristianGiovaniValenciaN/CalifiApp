@@ -11,7 +11,7 @@ def nombre_repetido(alumnos, nombre):
     #for registrado in alumnos:
         #if registrado.lower() == nombre:
             #return True
-        #return False
+        #Sreturn False
     return buscar_alumno(alumnos, nombre) is not None
 
 def registrar_alumno(alumnos, nombre):
